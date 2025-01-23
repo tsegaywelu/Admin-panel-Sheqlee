@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Kantumruy Pro";
+  src: url("/src/assets/fonts/Kantumruy/KantumruyPro-VariableFont_wght.ttf")
+    format("truetype");
+  font-weight: 100 900; /* i will modify  this range based on font weights in UI/UX */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Lora";
+  src: url("/src/assets/fonts/Lora/Lora-Italic-VariableFont_wght.ttf")
+    format("truetype");
+
+  font-weight: 400 700; /* Modify this based on the weights you downloaded */
+  font-style: normal;
+}
+@font-face {
+  font-family: "Recolta";
+  src: url("/src/assets/fonts/Recoleta-Black.ttf") format("truetype");
+
+  font-weight: 400 700; /* Modify this based on the weights you downloaded */
+  font-style: normal;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
