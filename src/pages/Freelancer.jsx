@@ -161,10 +161,10 @@ const Freelancer = () => {
   const changestatus = (freelancerid) => {
     setfreelancers((freelancer) =>
       freelancer.map((freelancer) =>
-        freelancer.id === freelancerid
+        freelancer.FrID === freelancerid
           ? {
               ...freelancer,
-              status:
+              Status:
                 freelancer.Status === "Active"
                   ? "Inactive"
                   : freelancer.Status === "Inactive"
@@ -184,7 +184,7 @@ const Freelancer = () => {
   );
   return (
     <div>
-      <div className=" min-h-[90vh]  mx-4 pr-4  w-full flex-grow overflow-hidden  ">
+      <div className=" min-h-[90vh]  mx-4 pr-6  w-full flex-grow overflow-hidden  ">
         {showModal && (
           <Modal closewin={closemodal} message={" FILTER BY DATE"} />
         )}
@@ -239,7 +239,7 @@ const Freelancer = () => {
                 />
 
                 <Dropdownform
-                  options={["All actions", "Active", "Deactivated"]}
+                  options={["Active", "Inactive"]}
                   defaultText="Action"
 
                   //   updateFormData={updateFormData}
@@ -316,7 +316,7 @@ const Freelancer = () => {
                 .slice(minimum === 0 ? minimum : minimum - 1, maximum)
                 .map((freelancer, index) => (
                   <tr
-                    key={Freelancer.FrID}
+                    key={freelancer.FrID}
                     className={`  ${
                       index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
                     } border-b`}

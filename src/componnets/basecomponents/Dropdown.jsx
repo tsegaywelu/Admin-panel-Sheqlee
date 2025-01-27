@@ -1,108 +1,74 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { useLocation } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import arrowdown from "../../assets/SVG/arrowdown.svg";
-function Dropdown({
-  categories,
-  dropdowntitle,
-  icons,
-  showicons,
-  chnagelinksurl,
-  underline,
-  pagetype,
-}) {
+const Dropdown = ({
+  options,
+  defaultText,
+  labeltext,
+  warn,
+  updateFormData,
+  formData,
+  correctvalue2,
+  roundedright,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
-  const { pathname } = useLocation();
+  const [selectedvalue, setselected] = useState(defaultText);
+  useEffect(() => {
+    if (formData[correctvalue2]) {
+      setselected(formData[correctvalue2]);
+    }
+  }, [formData, correctvalue2]);
+  const toggleDropdown = () => setIsOpen(!isOpen);
+  const handleOptionClick = (option) => {
+    setselected(option);
+    updateFormData(correctvalue2, option);
+    setIsOpen(false);
+  };
   return (
-    <div className=" inline-block text-center">
-      {/* Dropdown button */}
-      <div className="relative">
+    <div className="text-start " onMouseLeave={(e) => setIsOpen(false)}>
+      {/* {labeltext && (
+        <label className=" md:text-xl inline-block my-3 font-kantumruy font-medium">
+          {labeltext} {warn && <span className="text-red-600">*</span>}
+        </label>
+      )} */}
+      <div className="relative inline-block w-full">
         <button
-          onClick={() => setIsOpen(!isOpen)}
-          className="inline-flex justify-center w-full rounded-md  pr-4 md:pr-6 py-2   text-sm md:text-base  text-black font-medium font-kantumruy  "
+          onClick={toggleDropdown}
+          className={`bg-custom-tag rounded-lg ${roundedright} h-full outline-none  py-2.5 px-3 w-full  text-placehoder-text text-start font-kantumruy`}
+          aria-expanded={isOpen}
+          aria-controls="dropdown-options"
         >
-          {dropdowntitle}
-          <span>
+          <span className={`${selectedvalue !== defaultText && "text-black"}`}>
             {" "}
-            <img src="{" alt="" />
-            <arrowdown
-              size={10}
-              className={`!fill-black  absolute top-4 right-0  md:right-2 transition duration-700 ${
-                isOpen ? "rotate-180" : "rotate-0"
-              }`}
-            />
+            {selectedvalue}
           </span>
+          <img
+            src={arrowdown}
+            alt=""
+            className={` h-3 w-3 absolute top-4 right-3 ${
+              isOpen
+                ? "rotate-180 transition duration-700"
+                : "rotate-0 transition duration-700"
+            }`}
+          />
         </button>
+        {isOpen && (
+          <ul
+            id="dropdown-options"
+            className="z-50 absolute text-custom-placeholder left-0 w-full  bg-white  rounded-md "
+          >
+            {options.map((option, index) => (
+              <li
+                key={index}
+                className="px-4 py-1.5 hover:bg-gray-100 cursor-pointer text-[13px] "
+                onClick={() => handleOptionClick(option)}
+              >
+                {option}
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
-
-      {/* Dropdown menu */}
-      {isOpen && (
-        <div>
-          <div className=" bg-stone-900/60 z-50">
-            <div
-              className={`absolute  z-40     rounded-b-[10px] overflow-hidden bg-white ring-1 ring-black ring-opacity-5 ${
-                showicons ? " right-3 md:right-10 md:w-[163px] " : "w-44"
-              }`}
-            >
-              <div className=" font-medium font-kantumruy ">
-                {categories.map((category, index) => (
-                  <a
-                    key={category}
-                    href="#"
-                    className="block  text-[11px] md:text-[13px] text-custom-black text-start hover:bg-gray-100 hover:text-gray-900   "
-                  >
-                    <div className="">
-                      <Link
-                        to={
-                          showicons
-                            ? `/sheqlee/${category}`
-                            : `/sheqlee/Categories/${category}`
-                        }
-                        onClick={() => setIsOpen(!isOpen)}
-                      >
-                        <div
-                          className={`flex py-[5px] md:py-2 justify-start gap-x-3  px-3  
-                            ${
-                              pagetype === "even" && index % 2 == 0
-                                ? "border-b-[2px] border-dvider pb-2 "
-                                : ""
-                            }      
-                          
-                          
-                         ${
-                           pagetype === "odd" && index !== categories.length - 1
-                             ? "border-b-[2px] border-dvider pb-2"
-                             : ""
-                         } 
-                          `}
-                        >
-                          {" "}
-                          {showicons && (
-                            <img
-                              src={icons[index]}
-                              alt="icons"
-                              width={14}
-                              height={14}
-                            />
-                          )}{" "}
-                          {category}
-                        </div>
-                      </Link>
-                    </div>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-          {/* // now i am doing this */}
-          <div
-            className="fixed top-0 left-0 w-full h-full backdrop:blur-lg z-20 bg-black opacity-45"
-            onClick={() => setIsOpen(!isOpen)}
-          ></div>
-        </div>
-      )}
     </div>
   );
-}
-
+};
 export default Dropdown;

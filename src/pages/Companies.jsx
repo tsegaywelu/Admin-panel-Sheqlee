@@ -184,7 +184,7 @@ const Companies = () => {
   );
   return (
     <div>
-      <div className=" min-h-[90vh] bg-custom-white mx-4 pr-4  w-full flex-grow overflow-hidden  ">
+      <div className=" min-h-[90vh] bg-custom-white mx-4 pr-6  w-full flex-grow overflow-hidden  ">
         {showModal && (
           <Modal closewin={closemodal} message={" FILTER BY DATE"} />
         )}
@@ -225,7 +225,7 @@ const Companies = () => {
 
                 <Dropdownform
                   options={["All actions", "Active", "Deactivated"]}
-                  defaultText="Action"
+                  defaultText="No. of Jobs"
                   roundedright={"rounded-r-none"}
                   //   updateFormData={updateFormData}
                   //   formData={formData}

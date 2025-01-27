@@ -12,7 +12,7 @@ import { Modal } from "../componnets/basecomponents/Modal";
 import { Link } from "react-router-dom";
 import plussvg from "../assets/SVG/plus.svg";
 import Deletemodal from "../componnets/onetimecomponents/Deletemodal";
-const Categories = () => {
+const Tags = () => {
   const [pagelimit, setpagelimit] = useState(7);
   const [currentPage, setCurrentPage] = useState(1);
   const [showModal, setshowModal] = useState(false);
@@ -30,92 +30,85 @@ const Categories = () => {
     setshowDeletemodal(true);
   }
 
-  const [Categories, setCategories] = useState([
+  const [Tags, setTags] = useState([
     {
-      categoryID: "CTID001",
-      categoryTitle: "Web Frontend",
-      tags: 11,
-      jobs: 27,
-      subscribers: 407,
-      createdOn: "2022-06-14",
-      status: "active",
+      tag_id: "TGID001",
+      tag_title: "Java",
+      Jobs: 27,
+      Subs: 407,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
     {
-      categoryID: "CTID002",
-      categoryTitle: "Backend Development",
-      tags: 7,
-      jobs: 32,
-      subscribers: 1024,
-      createdOn: "2022-06-14",
-      status: "active",
+      tag_id: "TGID002",
+      tag_title: "JavaScript",
+      Jobs: 32,
+      Subs: 1024,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
     {
-      categoryID: "CTID003",
-      categoryTitle: "Mobile App Development",
-      tags: 5,
-      jobs: 10,
-      subscribers: 879,
-      createdOn: "2022-06-14",
-      status: "active",
+      tag_id: "TGID003",
+      tag_title: "Flutter",
+      Jobs: 10,
+      Subs: 879,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
     {
-      categoryID: "CTID004",
-      categoryTitle: "API Development",
-      tags: 21,
-      jobs: 7,
-      subscribers: 2412,
-      createdOn: "2022-06-14",
-      status: "inactive",
+      tag_id: "TGID004",
+      tag_title: "Kotlin",
+      Jobs: 7,
+      Subs: 2412,
+      created_on: "14 Jun 2022",
+      Status: "inactive",
     },
     {
-      categoryID: "CTID005",
-      categoryTitle: "Full-Stack Development",
-      tags: 10,
-      jobs: 43,
-      subscribers: 102,
-      createdOn: "2022-06-14",
-      status: "active",
+      tag_id: "TGID005",
+      tag_title: "C",
+      Jobs: 43,
+      Subs: 102,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
     {
-      categoryID: "CTID006",
-      categoryTitle: "Progressive Web Apps Development",
-      tags: 9,
-      jobs: 113,
-      subscribers: 710,
-      createdOn: "2022-06-14",
-      status: "active",
+      tag_id: "TGID006",
+      tag_title: "C++",
+      Jobs: 113,
+      Subs: 710,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
     {
-      categoryID: "CTID007",
-      categoryTitle: "Hybrid Mobile App Development",
-      tags: 15,
-      jobs: 67,
-      subscribers: 1578,
-      createdOn: "2022-06-14",
-      status: "inactive",
+      tag_id: "TGID007",
+      tag_title: "Go",
+      Jobs: 67,
+      Subs: 1578,
+      created_on: "14 Jun 2022",
+      Status: "active",
     },
   ]);
 
-  const changestatus = (categoryid) => {
-    setCategories((Category) =>
-      Category.map((Category) =>
-        Category.categoryID === categoryid
+  const changestatus = (Tagid) => {
+    setTags((Tag) =>
+      Tag.map((Tag) =>
+        Tag.tag_id === Tagid
           ? {
-              ...Category,
-              status:
-                Category.status === "active"
+              ...Tag,
+              Status:
+                Tag.Status === "active"
                   ? "inactive"
-                  : Category.status === "inactive" && "active",
+                  : Tag.Status === "inactive" && "active",
             }
-          : Category
+          : Tag
       )
     );
   };
 
   const [minimum, setminimum] = useState(pagelimit * (currentPage - 1));
   const [maximum, setmaximum] = useState(
-    Categories.length < pagelimit * currentPage
-      ? Categories.length
+    Tags.length < pagelimit * currentPage
+      ? Tags.length
       : pagelimit * currentPage
   );
   return (
@@ -134,18 +127,20 @@ const Categories = () => {
           />
         )}
         <div className="flex  items-end  gap-16 py-8 pl-2 w-full   mx-4 overflow-visible  ">
-          <div className=" w-1/2 mb-7 flex gap-10  justify-start items-center  translate-y-4  ">
-            <div className="w-1/3  mt-3   ">
+          <div className=" w-1/2 mb-7 flex  gap-3  justify-start items-center  translate-y-4   ">
+            <div className="w-1/5  mt-3 ">
               <Underline
-                thetext={"CATEGORIES"}
+                thetext={"TAGS"}
                 textsize={"text-[23px] font-[900]"}
-                cssproperty={"bg-black w-[50%] h-[10px] rounded-xl absolute"}
+                cssproperty={
+                  "bg-black w-[40%] h-[10px] rounded-xl absolute mt-0.5"
+                }
               />
             </div>
-            <Link to={"/categories/addcategory"}>
-              <button className="bg-custom-purple mt-3 text-white py-2 px-2 w-fit text-[13px] rounded-[7px] flex items-center gap-1.5 font-medium">
+            <Link to={"/tags/addtag"}>
+              <button className="bg-custom-purple mt-3 text-white py-2 px-2.5 w-fit text-[13px] rounded-[7px] flex items-center gap-2 font-medium">
                 <img src={plussvg} alt="plus svg" className="w-3 h-3" />
-                add new category
+                add new tag
               </button>
             </Link>
           </div>
@@ -202,27 +197,26 @@ const Categories = () => {
           <table className="w-full z-10   ">
             <thead className="bg-custom-tag text-xl   font-kantumruy">
               <tr>
-                <th className="py-3  font-medium  text-start pl-5 ">
+                <th className="py-3  font-medium  text-start pl-5  ">
                   <div className="relative   ">
-                    Cat. ID
+                    Tag ID
                     <img
                       src={smalldownsvg}
                       alt=""
-                      className=" absolute w-[7px] h-[7px] right-4 top-3"
+                      className=" absolute w-[7px] h-[7px] right-20 top-3"
                     />
                   </div>
                 </th>
                 <th className="font-medium text-start ">
                   <div className="relative  text-start  ">
-                    Category title
+                    Tag title
                     <img
                       src={smalldownsvg}
                       alt=""
-                      className=" absolute w-[7px] h-[7px] right-52 top-3 "
+                      className=" absolute w-[7px] h-[7px] right-16 top-3 "
                     />
                   </div>
                 </th>
-                <th className="font-medium text-center pr-4 ">Tags</th>
 
                 <th className="font-medium text-center ">
                   <div className="relative">
@@ -240,7 +234,7 @@ const Categories = () => {
                     <img
                       src={smalldownsvg}
                       alt=""
-                      className=" absolute w-[7px] h-[7px] right-1 top-3"
+                      className=" absolute w-[7px] h-[7px] right-0 top-3"
                     />
                   </div>
                 </th>
@@ -250,71 +244,72 @@ const Categories = () => {
               </tr>
             </thead>
             <tbody>
-              {Categories.slice(
-                minimum === 0 ? minimum : minimum - 1,
-                maximum
-              ).map((Category, index) => (
-                <tr
-                  key={Category.categoryID}
-                  className={`  ${
-                    index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
-                  } border-b`}
-                >
-                  <td className="py-3 text-start  pl-5 ">
-                    {Category.categoryID}
-                  </td>
-                  <td className="">{Category.categoryTitle}</td>
-                  <td className="text-end pr-4">{Category.tags}</td>
-                  <td className="text-end  ">
-                    <div className="flex items-center justify-end gap-2">
-                      {Category.jobs}
+              {Tags.slice(minimum === 0 ? minimum : minimum - 1, maximum).map(
+                (tag, index) => (
+                  <tr
+                    key={tag.tag_id}
+                    className={`  ${
+                      index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
+                    } border-b`}
+                  >
+                    <td className="py-3 text-start  pl-5 ">{tag.tag_id}</td>
+                    <td className="">{tag.tag_title}</td>
 
-                      <Link to={`/categories/${Category.categoryID}`}>
-                        {" "}
-                        <img src={linksvg} alt="link" className="w-3 h-3" />
-                      </Link>
-                    </div>
-                  </td>
+                    <td className="text-end  ">
+                      <div className="flex items-center justify-end gap-2">
+                        {tag.Jobs}
 
-                  <td className="text-end pr-3">{Category.subscribers}</td>
-
-                  <td className="text-center">{Category.createdOn}</td>
-                  <td className="">
-                    <div className="flex items-end gap-3 justify-center">
-                      <div
-                        className={`rounded-[3px] border-2   p-[1px] w-[26px] h-fit flex  ${
-                          Category.status === "active"
-                            ? "border-green-500 justify-end"
-                            : Category.status === "inactive" &&
-                              "border-red-700 justify-start"
-                        }`}
-                        onClick={(e) => changestatus(Category.categoryID)}
-                      >
-                        <div
-                          className={`min-w-[6px] w-[6px] min-h-[6px] h-[6px]  ${
-                            Category.status === "active"
-                              ? "bg-green-500"
-                              : Category.status === "inactive" && "bg-red-700"
-                          }`}
-                        ></div>
+                        <Link to={`/tags/${tag.tag_id}`}>
+                          {" "}
+                          <img src={linksvg} alt="link" className="w-3 h-3" />
+                        </Link>
                       </div>
-                      <button>
-                        <img src={eye1svg} alt="view" className="w-4 h-4" />
-                      </button>
-                      <button>
-                        <img src={deletesvg} alt="delete" className="w-4 h-4" />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+                    </td>
+
+                    <td className="text-end pr-3">{tag.Subs}</td>
+
+                    <td className="text-center">{tag.created_on}</td>
+                    <td className="">
+                      <div className="flex items-end gap-3 justify-center">
+                        <div
+                          className={`rounded-[3px] border-2   p-[1px] w-[26px] h-fit flex  ${
+                            tag.Status === "active"
+                              ? "border-green-500 justify-end"
+                              : tag.Status === "inactive" &&
+                                "border-red-700 justify-start"
+                          }`}
+                          onClick={(e) => changestatus(tag.tag_id)}
+                        >
+                          <div
+                            className={`min-w-[6px] w-[6px] min-h-[6px] h-[6px]  ${
+                              tag.Status === "active"
+                                ? "bg-green-500"
+                                : tag.Status === "inactive" && "bg-red-700"
+                            }`}
+                          ></div>
+                        </div>
+                        <button>
+                          <img src={eye1svg} alt="view" className="w-4 h-4" />
+                        </button>
+                        <button>
+                          <img
+                            src={deletesvg}
+                            alt="delete"
+                            className="w-4 h-4"
+                          />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              )}
             </tbody>
           </table>
         </div>
       </div>
       <div className="">
         <Pagination
-          total_jobs={Categories.length}
+          total_jobs={Tags.length}
           pagelimit={pagelimit}
           setpagelimit={setpagelimit}
           currentPage={currentPage}
@@ -329,4 +324,4 @@ const Categories = () => {
   );
 };
 
-export default Categories;
+export default Tags;

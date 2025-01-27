@@ -130,12 +130,12 @@ const Jobdetail = () => {
   );
   return (
     <div>
-      <div className="bg-custom-white mx-4 min-h-[90vh]">
+      <div className="bg-custom-white ml-4 mr-2 min-h-[90vh]">
         {showModal && (
           <Modal closewin={closemodal} message={" FILTER BY DATE"} />
         )}
-        <div className="flex justify-between  items-end  py-4 pl-5 relative  ">
-          <Link className="w-5 h-5 absolute top-2" to={"/jobposts"}>
+        <div className="flex justify-between  items-end  py-4 pl-6 relative  ">
+          <Link className="w-5 h-5 absolute top-3" to={"/jobposts"}>
             <img src={backsvg} alt="back icon" />
           </Link>
           <div className="flex flex-col  mt-10  ">

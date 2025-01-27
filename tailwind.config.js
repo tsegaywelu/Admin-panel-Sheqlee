@@ -11,6 +11,8 @@ export default {
         "custom-placeholder": "#444444",
         "custom-white": "#F7F7F7",
         unknown: "#B4B4B4",
+        "placehoder-text": "#818181",
+        "around-white": "#EFEFEF",
       },
       fontFamily: {
         lora: ["Lora", "sans-serif"],

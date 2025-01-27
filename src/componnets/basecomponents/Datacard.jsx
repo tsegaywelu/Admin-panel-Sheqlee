@@ -47,7 +47,7 @@ const Datacard = ({
         <p className="font-bold text-4xl">{totalNumber}</p>
         <div className=" flex flex-col items-center justify-center gap-3 h-[100px] ">
           <p
-            className={`font-medium text-center leading-7  ${
+            className={`font-medium text-center leading-7   px-1 ${
               resize ? "text-[19px]" : "text-[22px]"
             } `}
           >

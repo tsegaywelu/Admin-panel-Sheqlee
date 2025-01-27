@@ -12,9 +12,28 @@ import bellsvg from "../../assets/SVG/bell.svg";
 import userssvg from "../../assets/SVG/users.svg";
 import configsvg from "../../assets/SVG/settings.svg";
 import tagssvg from "../../assets/SVG/tag.svg";
+import { useLocation } from "react-router-dom";
 export const LeftDashboared = () => {
+  const { pathname } = useLocation();
+
   const [activeTitle, setactiveTitle] = useState({
-    Title: "Dashboard",
+    Title: pathname.includes("jobposts")
+      ? "Job Posts"
+      : pathname.includes("freelancer")
+      ? "Freelancers"
+      : pathname.includes("companies")
+      ? "Companies"
+      : pathname.includes("categories")
+      ? "Categories"
+      : pathname.includes("tags")
+      ? "Tags"
+      : pathname.includes("users")
+      ? "Users"
+      : pathname.includes("subscribers")
+      ? "Subscribers"
+      : pathname.includes("systemconfig")
+      ? "System Config"
+      : "Dashboard",
   });
   const UpdateActivetitle = (Title, value) => {
     setactiveTitle((prevdata) => ({
@@ -126,6 +145,7 @@ export const LeftDashboared = () => {
             </li>
             <li>
               <Link
+                to={"/categories"}
                 className={`pl-6 py-[6px] flex gap-4  items-center  
                    ${
                      activeTitle.Title === "Categories"
@@ -144,6 +164,7 @@ export const LeftDashboared = () => {
             </li>
             <li>
               <Link
+                to={"/tags"}
                 className={`pl-6 py-[6px] flex gap-4  items-center  
                    ${
                      activeTitle.Title === "Tags"
@@ -162,6 +183,7 @@ export const LeftDashboared = () => {
             </li>
             <li>
               <Link
+                to={"/subscribers"}
                 className={`pl-6 py-[6px] flex gap-4  items-center  
                    ${
                      activeTitle.Title === "Subscribers"
@@ -180,6 +202,7 @@ export const LeftDashboared = () => {
             </li>
             <li>
               <Link
+                to={"/systemconfig"}
                 className={`pl-6 py-[6px] flex gap-4  items-center  
                    ${
                      activeTitle.Title === "System Config"
@@ -198,6 +221,7 @@ export const LeftDashboared = () => {
             </li>
             <li>
               <Link
+                to={"/users"}
                 className={`pl-6 py-[6px] flex gap-4  items-center  
                    ${
                      activeTitle.Title === "Users"

@@ -55,16 +55,16 @@ const Pagination = ({
     return () => document.removeEventListener("click", handleOutsideClick);
   }, []);
 
-  if (total_jobs === 0) {
-    return (
-      <div className="bg-custom-tag flex justify-end items-center py-5 px-10 rounded-b-[10px] pr-4 mx-4">
-        No data available
-      </div>
-    );
-  }
+  // if (total_jobs === 0) {
+  //   return (
+  //     <div className="bg-custom-tag flex justify-end items-center py-5 px-10 rounded-b-[10px] pr-4 mx-4">
+  //       No data available
+  //     </div>
+  //   );
+  // }
 
   return (
-    <div className="bg-custom-tag flex justify-end items-center py-5 px-10 gap-10 rounded-b-[10px] pr-4 ml-4">
+    <div className="bg-custom-tag flex justify-end items-center py-5 px-10 gap-10 rounded-b-[10px] pr-4 ml-4 mr-2">
       <div className="relative flex dropdown-container">
         <p>Rows per page:</p>
         <button
