@@ -2,6 +2,7 @@ import React from "react";
 import FAQ from "./FAQ";
 import { useState } from "react";
 import Textcard from "../componnets/basecomponents/Textcard";
+import APGSPPTSCP from "./APGSPPTSCP";
 const Systemconfig = () => {
   const [activeTitle, setactiveTitle] = useState({
     Title: "FAQ",
@@ -77,7 +78,7 @@ const Systemconfig = () => {
           />
         </button>
       </div>
-      <FAQ />
+      <APGSPPTSCP />
     </div>
   );
 };

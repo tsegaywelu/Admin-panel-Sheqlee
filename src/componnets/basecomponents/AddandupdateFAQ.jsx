@@ -7,25 +7,22 @@ import Dropdown from "./Dropdown";
 import { useState } from "react";
 import { useRef } from "react";
 
-const Addandupdateuser = ({
+const AddandupdateFAQ = ({
   goto,
   Underlinetext,
   // textid,
   descriptiontoid,
   nameplaceholder,
 
-  profilebuttontext,
   defaulttext,
   buttontext,
 
   formData,
   handleInputChange,
-  setFormData,
+
   underlinewidth,
-  emailplaceholder,
-  phoneplaceholder,
+  answerplaceholder,
 }) => {
-  const [profilePic, setProfilePic] = useState(formData.icon);
   const [buttonbackground, setButtonbackground] = useState("bg-black");
   const [prevFormData, setPrevFormData] = useState(formData); // i am using this to check if the data has changed or not
 
@@ -33,51 +30,20 @@ const Addandupdateuser = ({
     if (buttontext === "Save") {
       // Check if all required fields are filled for "Save"
       const isFormValid =
-        formData.icon &&
-        formData.full_name &&
-        formData.user_role &&
-        formData.id &&
-        formData.email &&
-        formData.phone_number;
+        formData.qestion && formData.Audience && formData.id && formData.answer;
 
       setButtonbackground(isFormValid ? "bg-custom-purple" : "bg-black");
     } else if (buttontext === "Update") {
       // Compare current formData with previous values for "Update"
       const hasChanges =
-        formData.icon !== prevFormData.icon ||
-        formData.title !== prevFormData.title ||
+        formData.answer !== prevFormData.answer ||
+        formData.qestion !== prevFormData.qestion ||
         formData.id !== prevFormData.id ||
-        formData.yourTags.join(",") !== prevFormData.yourTags.join(",");
+        formData.Audience !== prevFormData.Audience;
 
       setButtonbackground(hasChanges ? "bg-custom-purple" : "bg-black");
     }
   }, [formData, buttontext, prevFormData]);
-
-  const fileInputRef = useRef(null);
-
-  function handleclick() {
-    fileInputRef.current.click();
-  }
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (
-      file &&
-      file.type.startsWith("image/") &&
-      file.size <= 2 * 1024 * 1024
-    ) {
-      // Max 2MB
-      const reader = new FileReader();
-      reader.onload = () => {
-        // setFormData((prev) => ({ ...prev, icon: reader.result }));
-        setFormData((prev) => ({ ...prev, icon: reader.result }));
-        setProfilePic(reader.result);
-      };
-      reader.readAsDataURL(file);
-    } else {
-      alert("Please upload a valid image file (Max size: 2MB).");
-    }
-  };
 
   return (
     <div className="bg-custom-white ml-4 pr-4  mr-2 min-h-screen relative  ">
@@ -114,42 +80,38 @@ const Addandupdateuser = ({
           </div>
           <div className="flex gap-x-8 items-start w-full">
             <div className="flex flex-col gap-y-2.5 w-[46%]  relative ">
-              <input
-                type="text"
-                placeholder={nameplaceholder}
-                className="bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text"
-                value={formData.full_name}
-                onChange={(e) => handleInputChange("full_name", e.target.value)}
-              />
-              <input
-                type="email"
-                placeholder={emailplaceholder}
-                className="bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text"
-                value={formData.email}
-                onChange={(e) => handleInputChange("email", e.target.value)}
-              />
-              <input
-                type="tel"
-                placeholder={phoneplaceholder}
-                className="bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text"
-                value={formData.phone_number}
-                onChange={(e) =>
-                  handleInputChange("phone_number", e.target.value)
-                }
-              />
-
               <Dropdown
                 defaultText={defaulttext}
-                options={["Super admin", "Admin", "	Sales"]}
+                options={["All", "Freelancers", "Companies"]}
                 formData={formData}
                 updateFormData={handleInputChange}
-                correctvalue2={"user_role"}
+                correctvalue2={"Audience"}
               />
+
+              <textarea
+                name="question"
+                id="qestion"
+                rows={2}
+                placeholder={nameplaceholder}
+                className="resize-none bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text"
+                value={formData.qestion}
+                onChange={(e) => handleInputChange("qestion", e.target.value)}
+              ></textarea>
+
+              <textarea
+                name="answer"
+                id="answer"
+                rows={6}
+                placeholder={answerplaceholder}
+                className=" text-sm resize-none bg-custom-tag pl-3 pr-1 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text leading-5"
+                value={formData.answer}
+                onChange={(e) => handleInputChange("answer", e.target.value)}
+              ></textarea>
             </div>
 
             {/* //upload side  */}
             <div className="flex  w-full gap-16  ">
-              <div className="flex flex-col gap-y-5 ">
+              {/* <div className="flex flex-col gap-y-5 ">
                 <div className="w-36 h-36 rounded-[7px] bg-custom-tag flex items-center justify-center overflow-hidden ">
                   <img
                     src={profilePic}
@@ -167,27 +129,19 @@ const Addandupdateuser = ({
                 >
                   {profilebuttontext}
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
 
         <button
-          className={` ${buttonbackground} text-white font-medium px-5 py-2 mt-24 text-lg rounded-[7px]`}
+          className={` ${buttonbackground} text-white font-medium px-5 py-2 mt-8 text-lg rounded-[7px]`}
         >
           {buttontext}
         </button>
-        <input
-          ref={fileInputRef}
-          type="file"
-          id="upload-button"
-          accept="image/*"
-          style={{ display: "none" }}
-          onChange={handleImageUpload}
-        />
       </div>
     </div>
   );
 };
 
-export default Addandupdateuser;
+export default AddandupdateFAQ;

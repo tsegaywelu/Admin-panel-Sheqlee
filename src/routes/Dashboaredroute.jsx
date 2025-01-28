@@ -14,6 +14,7 @@ import Adduser from "../pages/Adduser";
 import Subscribers from "../pages/Subscribers";
 import Systemconfig from "../pages/Systemconfig";
 import AddFAQ from "../componnets/basecomponents/AddFAQ";
+import Updatefaq from "../pages/Updatefaq";
 const dashboardRoutes = [
   { path: "/", element: <Home /> },
   { path: "/jobposts", element: <Jopposts /> },
@@ -31,6 +32,7 @@ const dashboardRoutes = [
   { path: "/subscribers", element: <Subscribers /> },
   { path: "/systemconfig", element: <Systemconfig /> },
   { path: "/FAQ/addfaq", element: <AddFAQ /> },
+  { path: "/FAQ/:faqId", element: <Updatefaq /> },
 
   // i wil add here all other routes
 ];

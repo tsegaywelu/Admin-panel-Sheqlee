@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 
-import AddandupdateFAQ from "./AddandupdateFAQ";
+import AddandupdateFAQ from "../componnets/basecomponents/AddandupdateFAQ";
 
 const Addtag = () => {
   const [formData, setFormData] = useState({
     id: "FQID005",
-    qestion: "",
-    answer: "",
+    qestion: "How does the process work?",
+    answer:
+      "When matching is all set which you have applied for, you will make a contract with Sheqlee Inc. The payment to the developer will be one month later, and the payment will proceed when both sides",
 
-    Audience: "",
+    Audience: "Companies",
   });
   console.table(formData);
 
@@ -21,16 +22,16 @@ const Addtag = () => {
       {formData.yourTags[0]} */}
       <AddandupdateFAQ
         goto={"/systemconfig"}
-        Underlinetext={"ADD A NEW FAQ"}
+        Underlinetext={"UPDATE FAQ"}
         descriptiontoid={"~ FAQ ID"}
         nameplaceholder={"Question…"}
         answerplaceholder={"Answer…"}
         defaulttext={"Audience"}
-        buttontext={"Save"}
+        buttontext={"Update"}
         formData={formData}
         handleInputChange={handleInputChange}
         setFormData={setFormData}
-        underlinewidth={"w-[40%]"}
+        underlinewidth={"w-[41%]"}
       />
     </div>
   );

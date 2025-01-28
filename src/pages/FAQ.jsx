@@ -2,10 +2,10 @@ import React, { useCallback, useState } from "react";
 import Underline from "../componnets/basecomponents/Underline";
 import Dropdownform from "../componnets/basecomponents/Dropdownform";
 import datesvg from "../assets/SVG/Date.svg";
-import linksvg from "../assets/SVG/link.svg";
+
 import deletesvg from "../assets/SVG/delete.svg";
 import eye1svg from "../assets/SVG/eye1.svg";
-import smalldownsvg from "../assets/SVG/smalldown.svg";
+
 import Pagination from "../componnets/basecomponents/Pagination";
 import searchsvg from "../assets/SVG/search.svg";
 import { Modal } from "../componnets/basecomponents/Modal";
@@ -19,17 +19,6 @@ const FAQ = () => {
   const [showModal, setshowModal] = useState(false);
   const closemodal = useCallback(() => setshowModal(false), []);
   const openmodal = useCallback(() => setshowModal(true), []);
-
-  //modal for deletion
-  const [showDeletemodal, setshowDeletemodal] = useState(false);
-  const closeDeletemodal = useCallback(() => setshowDeletemodal(false), []);
-  const openDeletemodal = useCallback(() => setshowDeletemodal(true), []);
-  const [selectedCompany, setselectedCompany] = useState(null);
-
-  function handleselectedCompany(Company) {
-    setselectedCompany(Company);
-    setshowDeletemodal(true);
-  }
 
   const [FAQ, setFAQ] = useState([
     {
@@ -100,19 +89,11 @@ const FAQ = () => {
   );
   return (
     <div>
-      <div className=" min-h-[90vh] bg-custom-white mx-4 pr-6  w-full flex-grow overflow-hidden  ">
+      <div className="  bg-custom-white mx-4 pr-6  w-full flex-grow overflow-hidden  ">
         {showModal && (
           <Modal closewin={closemodal} message={" FILTER BY DATE"} />
         )}
-        {showDeletemodal && (
-          <Deletemodal
-            Title={selectedCompany}
-            closeDeletemodal={closeDeletemodal}
-            message={
-              "We could not find the types of developers we are looking for here on your platform. As a result, we have decided to close our account and whenever the need arises we will for sure be back on your platform looking for developers. Thank you for all what you are doing!"
-            }
-          />
-        )}
+
         <div className="flex  items-end  gap-16 pt-4 pb-4 pl-2 w-full   mx-4 overflow-visible  ">
           <div className=" w-1/2 mb-7 flex  gap-0  justify-start items-center  -translate-y-2   ">
             <div className="w-1/5 mt-3 ">
@@ -209,7 +190,7 @@ const FAQ = () => {
                     <td className="">{FA.audience}</td>
 
                     <td className="">
-                      <div className="flex items-end gap-3 justify-center">
+                      <div className="flex items-center gap-3 justify-center">
                         <div
                           className={`rounded-[3px] border-2   p-[1px] w-[26px] h-fit flex  ${
                             FA.status === "active"
@@ -227,9 +208,13 @@ const FAQ = () => {
                             }`}
                           ></div>
                         </div>
+
                         <button>
-                          <img src={eye1svg} alt="view" className="w-4 h-4" />
+                          <Link to={`/FAQ/${FA.faq_id}`}>
+                            <img src={eye1svg} alt="view" className="w-4 h-4" />
+                          </Link>
                         </button>
+
                         <button>
                           <img
                             src={deletesvg}
