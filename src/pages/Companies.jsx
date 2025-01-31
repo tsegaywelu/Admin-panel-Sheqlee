@@ -288,7 +288,7 @@ const Companies = () => {
                     Subs
                     <img
                       src={smalldownsvg}
-                      alt=""
+                      alt="icon "
                       className=" absolute w-[7px] h-[7px] right-3 top-3"
                     />
                   </div>
@@ -298,7 +298,7 @@ const Companies = () => {
                     Jobs
                     <img
                       src={smalldownsvg}
-                      alt=""
+                      alt="icon"
                       className=" absolute w-[7px] h-[7px] right-1 top-3"
                     />
                   </div>

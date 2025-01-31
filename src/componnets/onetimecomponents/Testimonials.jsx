@@ -52,7 +52,7 @@ const Testimonials = () => {
   ];
 
   return (
-    <div className="  bg-custom-white ml-4 ">
+    <div className="  bg-custom-white ml-4  pr-2">
       <div>
         <div className="pt-10 pl-6 w-1/2 ">
           <Underline

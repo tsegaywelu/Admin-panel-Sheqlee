@@ -33,61 +33,63 @@ const Footer = () => {
   );
 
   return (
-    <div className="bg-custom-white  ml-4 ">
-      <div className="pt-12 ml-6">
-        <Underline
-          thetext={"Footer"}
-          textsize={"text-[23px] font-[900]"}
-          cssproperty={"bg-black w-[5%] h-[10px] rounded-xl absolute mt-0.5"}
-        />
-      </div>
+    <>
+      <div className="bg-custom-white  ml-4  pr-2">
+        <div className="pt-12 ml-6">
+          <Underline
+            thetext={"Footer"}
+            textsize={"text-[23px] font-[900]"}
+            cssproperty={"bg-black w-[5%] h-[10px] rounded-xl absolute mt-0.5"}
+          />
+        </div>
 
-      <div className="mt-12">
-        <table className="w-full">
-          <thead className="bg-custom-tag text-xl   font-kantumruy">
-            <tr className="">
-              <th className="py-3  font-medium  text-start pl-5 ">Section</th>
-              <th className="font-medium text-start">Content</th>
-              <th className="font-medium text-start">Action</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Data.slice(minimum === 0 ? minimum : minimum - 1, maximum).map(
-              (data, index) => (
-                <tr
-                  key={index}
-                  className={`  ${
-                    index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
-                  } border-b`}
-                >
-                  <td className="py-3 text-start  pl-5">{data.section}</td>
-                  <td>{data.content}</td>
-                  <td className="">
-                    <div className="flex items-center justify-start gap-5 ">
-                      <button
-                        onClick={() => navigate(`/edithero`, { state: item })}
-                      >
-                        <img
-                          src={editsvg}
-                          alt="edit icon"
-                          className="w-3 h-3"
-                        />
-                      </button>
+        <div className="mt-12">
+          <table className="w-full">
+            <thead className="bg-custom-tag text-xl   font-kantumruy">
+              <tr className="">
+                <th className="py-3  font-medium  text-start pl-5 ">Section</th>
+                <th className="font-medium text-start">Content</th>
+                <th className="font-medium text-start">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Data.slice(minimum === 0 ? minimum : minimum - 1, maximum).map(
+                (data, index) => (
+                  <tr
+                    key={index}
+                    className={`  ${
+                      index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
+                    } border-b`}
+                  >
+                    <td className="py-3 text-start  pl-5">{data.section}</td>
+                    <td className="text-custom-blue">{data.content}</td>
+                    <td className="">
+                      <div className="flex items-center justify-start gap-5 ">
+                        <button
+                          onClick={() => navigate(`/edithero`, { state: item })}
+                        >
+                          <img
+                            src={editsvg}
+                            alt="edit icon"
+                            className="w-3 h-3"
+                          />
+                        </button>
 
-                      <button>
-                        <img
-                          src={deletesvg}
-                          alt="delete icon "
-                          className="w-4 h-4"
-                        />
-                      </button>
-                    </div>
-                  </td>
-                </tr>
-              )
-            )}
-          </tbody>
-        </table>
+                        <button>
+                          <img
+                            src={deletesvg}
+                            alt="delete icon "
+                            className="w-4 h-4"
+                          />
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                )
+              )}
+            </tbody>
+          </table>
+        </div>
       </div>
       <Pagination
         total_jobs={Data.length}
@@ -100,7 +102,7 @@ const Footer = () => {
         minimum={minimum}
         maximum={maximum}
       />
-    </div>
+    </>
   );
 };
 

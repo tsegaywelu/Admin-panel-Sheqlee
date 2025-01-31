@@ -88,7 +88,7 @@ const FAQ = () => {
     FAQ.length < pagelimit * currentPage ? FAQ.length : pagelimit * currentPage
   );
   return (
-    <div className="pr-2">
+    <div className="pr-5">
       <div className="w-full  mx-4 ">
         <div className="  bg-custom-white      w-full flex-grow overflow-hidden   ">
           {showModal && (

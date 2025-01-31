@@ -6,10 +6,22 @@ import searchsvg from "../assets/SVG/search.svg";
 import deletesvg from "../assets/SVG/delete.svg";
 import eye1svg from "../assets/SVG/eye1.svg";
 import Pagination from "../componnets/basecomponents/Pagination";
+import Feedbackmodal from "../componnets/onetimecomponents/Feedbackmodal";
 const Feedback = () => {
   const [showModal, setshowModal] = useState(false);
   const closemodal = useCallback(() => setshowModal(false), []);
   const openmodal = useCallback(() => setshowModal(true), []);
+
+  const [opendetilsmodal, setdetailsmodal] = useState(false);
+  const closedetailmodal = useCallback(() => setdetailsmodal(false), []);
+  const opendetailodal = useCallback(() => setdetailsmodal(true), []);
+
+  const [selectedfeedback, setselectedfeedback] = useState({});
+
+  const handleselectedfeedback = (data) => {
+    setselectedfeedback(data);
+    opendetailodal();
+  };
 
   const Data = [
     {
@@ -20,7 +32,8 @@ const Feedback = () => {
     },
     {
       Fe_ID: "FDID002",
-      Message: "Sheqlee helped me and my company to...",
+      Message:
+        "Thank you Sheqlee for helping me find a good job that I can work from my home. The opportunity I have gotten has given me the chance to support my family.",
       Name: "Tedros Haile",
       Email: "tedros.haile@gmail.com",
     },
@@ -70,7 +83,12 @@ const Feedback = () => {
         {showModal && (
           <Modal closewin={closemodal} message={" FILTER BY DATE"} />
         )}
-
+        {opendetilsmodal && (
+          <Feedbackmodal
+            closewin={closedetailmodal}
+            selectedfeedback={selectedfeedback}
+          />
+        )}
         <div className="flex justify-between pl-6">
           <div className="">
             <Underline
@@ -132,7 +150,7 @@ const Feedback = () => {
                   <td className="text-start text-custom-blue">{item.Email}</td>
                   <td className="text-start">
                     <div className="flex items-end gap-5 justify-start">
-                      <button>
+                      <button onClick={(e) => handleselectedfeedback(item)}>
                         <img src={eye1svg} alt="view" className="w-4 h-4" />
                       </button>
                       <button>

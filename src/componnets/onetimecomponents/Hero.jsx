@@ -23,7 +23,7 @@ const Hero = () => {
   ];
 
   return (
-    <div className="bg-custom-white ml-4  ">
+    <div className="bg-custom-white ml-4  pr-2 ">
       <div className="pt-12 pl-6 w-1/2 ">
         <Underline
           thetext={"HERO"}

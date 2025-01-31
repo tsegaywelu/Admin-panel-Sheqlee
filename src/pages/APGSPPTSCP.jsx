@@ -97,8 +97,8 @@ const APGSPPTSCP = () => {
       : pagelimit * currentPage
   );
   return (
-    <div className="w-full pr-2">
-      <div className="w-full bg-custom-white mx-4 ">
+    <div className="w-full pr-5">
+      <div className="w-full bg-custom-white mx-4  ">
         <div className="     w-full flex-grow overflow-hidden      ">
           <div className="flex  items-center  gap-16 pt-4 pb-4 pl-2 w-full    overflow-visible  ">
             <div className=" w-1/2 mb-7 flex  gap-0  justify-start items-center     ">
