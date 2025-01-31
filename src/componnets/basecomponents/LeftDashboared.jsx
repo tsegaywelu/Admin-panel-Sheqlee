@@ -13,6 +13,7 @@ import userssvg from "../../assets/SVG/users.svg";
 import configsvg from "../../assets/SVG/settings.svg";
 import tagssvg from "../../assets/SVG/tag.svg";
 import { useLocation } from "react-router-dom";
+import feedbacksvg from "../../assets/SVG/feedback.svg";
 export const LeftDashboared = () => {
   const { pathname } = useLocation();
 
@@ -33,6 +34,10 @@ export const LeftDashboared = () => {
       ? "Subscribers"
       : pathname.includes("systemconfig")
       ? "System Config"
+      : pathname.includes("Feedbacks")
+      ? "Feedbacks"
+      : pathname.includes("editprofile")
+      ? "Edit Profile"
       : "Dashboard",
   });
   const UpdateActivetitle = (Title, value) => {
@@ -46,21 +51,38 @@ export const LeftDashboared = () => {
       <div className="flex justify-center">
         <img src={Icon} className="w-[62px] h-[62px]" />
       </div>
-      <div className="flex items-center mb-8 gap-4 mt-8 pl-5 pr-1">
-        <img src={tsegay} alt="Profile" className="w-9 h-9 rounded-full" />
-        <div className="flex justify-between items-center w-full  relative">
-          <h3 className="font-medium text-[13px] ">Muruts Yifter</h3>
-          <a
-            href="#"
-            className="text-[8px] text-black mr-[10px] uppercase font-bold border-b-[1.5px] border-black  rounded-xs "
-          >
-            Logout
-          </a>
-          <div className="absolute w-1 h-1 right-0 top-[6px]">
-            <img src={greater} alt="greater icon " />
+      <Link
+        to={"/editprofile"}
+        className={`    ${
+          activeTitle.Title === "Edit Profile"
+            ? " bg-custom-slate font-semibold"
+            : " font-medium"
+        }`}
+        onClick={(e) => UpdateActivetitle("Title", "Edit Profile")}
+      >
+        <button
+          className={`flex items-center mb-8 gap-4 mt-8 pl-5 pr-1 py-1  w-full ${
+            activeTitle.Title === "Edit Profile"
+              ? " bg-custom-slate font-semibold"
+              : " font-medium"
+          }`}
+        >
+          <img src={tsegay} alt="Profile" className="w-9 h-9 rounded-full" />
+          <div className="flex justify-between items-center w-full  relative ">
+            <h3 className="font-medium text-[13px] ">Muruts Yifter</h3>
+            <a
+              href="#"
+              className="text-[8px] text-black mr-[10px] uppercase font-bold border-b-[1.5px] border-black  rounded-xs "
+            >
+              Logout
+            </a>
+            <div className="absolute w-1 h-1 right-0 top-[6px]">
+              <img src={greater} alt="greater icon " />
+            </div>
           </div>
-        </div>
-      </div>
+        </button>
+      </Link>
+
       {/* profile  section */}
       <div className=" ">
         {/* Navigation portion  */}
@@ -198,6 +220,26 @@ export const LeftDashboared = () => {
                   className="w-[19px] h-[19px] mr-3"
                 />
                 Subscribers
+              </Link>
+            </li>
+
+            <li>
+              <Link
+                to={"/Feedbacks"}
+                className={`pl-6 py-[6px] flex gap-4  items-center  
+                   ${
+                     activeTitle.Title === "Feedbacks"
+                       ? "text-black bg-custom-slate font-semibold"
+                       : "text-custom-placeholder font-medium"
+                   }`}
+                onClick={(e) => UpdateActivetitle("Title", "Feedbacks")}
+              >
+                <img
+                  src={feedbacksvg}
+                  alt="svg icon "
+                  className="w-[19px] h-[19px] mr-3"
+                />
+                Feedbacks
               </Link>
             </li>
             <li>

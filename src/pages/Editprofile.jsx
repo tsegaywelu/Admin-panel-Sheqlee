@@ -6,11 +6,11 @@ import Addandupdateuser from "../componnets/basecomponents/Addandupdateuser";
 const Addtag = () => {
   const [formData, setFormData] = useState({
     id: "USR005",
-    full_name: "",
-    email: "",
-    phone_number: "",
-    user_role: "",
-
+    full_name: "Muruts Yifter",
+    email: "muruts.yifter@gmail.com",
+    phone_number: "+251912345678",
+    password: "",
+    confirm_password: "",
     icon: profilesvg,
   });
   console.table(formData);
@@ -24,19 +24,19 @@ const Addtag = () => {
       {formData.yourTags[0]} */}
       <Addandupdateuser
         goto={"/users"}
-        Underlinetext={"REGISTER A USER"}
+        Underlinetext={"EDIT PROFILE"}
         descriptiontoid={"~ User ID"}
         nameplaceholder={"Full name"}
         emailplaceholder={"Email"}
         phoneplaceholder={"Phone number"}
         profilebuttontext={"Upload photo"}
         defaulttext={"User role"}
-        buttontext={"Save"}
+        buttontext={"Update"}
         formData={formData}
         handleInputChange={handleInputChange}
         setFormData={setFormData}
-        underlinewidth={"w-[30%]"}
-        adddropdown
+        underlinewidth={"w-[34%]"}
+        addpasswordinput
       />
     </div>
   );

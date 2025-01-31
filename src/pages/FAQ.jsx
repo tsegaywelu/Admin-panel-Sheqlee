@@ -88,150 +88,162 @@ const FAQ = () => {
     FAQ.length < pagelimit * currentPage ? FAQ.length : pagelimit * currentPage
   );
   return (
-    <div>
-      <div className="  bg-custom-white mx-4 pr-6  w-full flex-grow overflow-hidden  ">
-        {showModal && (
-          <Modal closewin={closemodal} message={" FILTER BY DATE"} />
-        )}
+    <div className="pr-2">
+      <div className="w-full  mx-4 ">
+        <div className="  bg-custom-white      w-full flex-grow overflow-hidden   ">
+          {showModal && (
+            <Modal closewin={closemodal} message={" FILTER BY DATE"} />
+          )}
 
-        <div className="flex  items-end  gap-16 pt-4 pb-4 pl-2 w-full   mx-4 overflow-visible  ">
-          <div className=" w-1/2 mb-7 flex  gap-0  justify-start items-center  -translate-y-2   ">
-            <div className="w-1/5 mt-3 ">
-              <Underline
-                thetext={"FAQ"}
-                textsize={"text-[23px] font-[900]"}
-                cssproperty={
-                  "bg-black w-[40%] h-[10px] rounded-xl absolute mt-0.5"
-                }
-              />
-            </div>
-            <Link to={"/FAQ/addfaq"}>
-              <button className="bg-custom-purple mt-3 text-white py-2 px-2.5 w-fit text-[13px] rounded-[7px] flex items-center gap-2 font-medium">
-                <img src={plussvg} alt="plus svg" className="w-3 h-3" />
-                add new FAQ
-              </button>
-            </Link>
-          </div>
-
-          <div className="flex  justify-end w-[60%]">
-            <div className="flex  justify-end w-full">
-              <div className="w-1/5 mt-3 translate-x-40">
+          <div className="flex  items-end  gap-16 pt-4 pb-4 pl-2 w-full    overflow-visible    ">
+            <div className=" w-1/2 mb-7 flex  gap-0  justify-start items-center  -translate-y-2   ">
+              <div className="w-1/5 mt-3 ">
                 <Underline
-                  thetext={"FILTER BY"}
-                  textsize={"text-[16px] font-bold"}
-                  cssproperty={"bg-black w-1/3  h-[7px] rounded-xl absolute "}
+                  thetext={"FAQ"}
+                  textsize={"text-[23px] font-[900]"}
+                  cssproperty={
+                    "bg-black w-[40%] h-[10px] rounded-xl absolute mt-0.5"
+                  }
                 />
               </div>
-              <div className="w-[100%] ">
-                <div className="grid grid-cols-2 gap-x-5 gap-y-4 w-full pr-4  ">
-                  <div className="col-start-2 col-span-1">
-                    <Dropdownform
-                      options={["All Audience ", "Freelancers", "Companies"]}
-                      defaultText="Audience"
-                      roundedright={"rounded-r-none"}
-                      //   updateFormData={updateFormData}
-                      //   formData={formData}
-                      //   correctvalue2={"category"}
-                    />
-                  </div>
+              <Link to={"/FAQ/addfaq"}>
+                <button className="bg-custom-purple mt-3 text-white py-2 px-2.5 w-fit text-[13px] rounded-[7px] flex items-center gap-2 font-medium">
+                  <img src={plussvg} alt="plus svg" className="w-3 h-3" />
+                  add new FAQ
+                </button>
+              </Link>
+            </div>
 
-                  <div className=" col-start-1 col-span-2 flex items-center gap-4  w-full ">
-                    <button
-                      className="py-[5px] px-3 bg-custom-tag h-full overflow-hidden rounded-lg  "
-                      onClick={openmodal}
-                    >
-                      <img src={datesvg} alt="date icon" className="w-7 h-7" />{" "}
-                    </button>
-                    <div className="w-full relative">
-                      <input
-                        type="text"
-                        placeholder="Search FAQ…"
-                        className="py-[10px] pl-8   text-[16px] placeholder:text-custom-placeholder bg-custom-tag outline-none rounded-lg  rounded-r-none w-full"
+            <div className="flex  justify-end w-[60%] ">
+              <div className="flex  justify-end w-full ">
+                <div className="w-1/5 mt-3 translate-x-40">
+                  <Underline
+                    thetext={"FILTER BY"}
+                    textsize={"text-[16px] font-bold"}
+                    cssproperty={"bg-black w-1/3  h-[7px] rounded-xl absolute "}
+                  />
+                </div>
+                <div className="w-[100%]  ">
+                  <div className="grid grid-cols-2 gap-x-5 gap-y-4 w-full   ">
+                    <div className="col-start-2 col-span-1">
+                      <Dropdownform
+                        options={["All Audience ", "Freelancers", "Companies"]}
+                        defaultText="Audience"
+                        roundedright={"rounded-r-none"}
+                        //   updateFormData={updateFormData}
+                        //   formData={formData}
+                        //   correctvalue2={"category"}
                       />
-                      <img
-                        src={searchsvg}
-                        alt="search"
-                        className="w-4 h-4 absolute top-4 left-2"
-                      />
+                    </div>
+
+                    <div className=" col-start-1 col-span-2 flex items-center gap-4  w-full ">
+                      <button
+                        className="py-[5px] px-3 bg-custom-tag h-full overflow-hidden rounded-lg  "
+                        onClick={openmodal}
+                      >
+                        <img
+                          src={datesvg}
+                          alt="date icon"
+                          className="w-7 h-7"
+                        />{" "}
+                      </button>
+                      <div className="w-full relative">
+                        <input
+                          type="text"
+                          placeholder="Search FAQ…"
+                          className="py-[10px] pl-8   text-[16px] placeholder:text-custom-placeholder bg-custom-tag outline-none rounded-lg  rounded-r-none w-full"
+                        />
+                        <img
+                          src={searchsvg}
+                          alt="search"
+                          className="w-4 h-4 absolute top-4 left-2"
+                        />
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <div className="w-full z-10 ">
-          <table className="w-full z-10   ">
-            <thead className="bg-custom-tag text-xl   font-kantumruy">
-              <tr>
-                <th className="py-3  font-medium  text-start pl-5  ">FAQ ID</th>
-                <th className="font-medium text-start ">Questions</th>
+          <div className="w-full z-10 ">
+            <table className="w-full z-10   ">
+              <thead className="bg-custom-tag text-xl   font-kantumruy">
+                <tr>
+                  <th className="py-3  font-medium  text-start pl-5  ">
+                    FAQ ID
+                  </th>
+                  <th className="font-medium text-start ">Questions</th>
 
-                <th className="font-medium text-start">Audience</th>
+                  <th className="font-medium text-start">Audience</th>
 
-                <th className="font-medium text-center">Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {FAQ.slice(minimum === 0 ? minimum : minimum - 1, maximum).map(
-                (FA, index) => (
-                  <tr
-                    key={FA.faq_id}
-                    className={`  ${
-                      index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
-                    } border-b`}
-                  >
-                    <td className="py-3 text-start  pl-5 ">{FA.faq_id}</td>
-                    <td className=" text-start truncate max-w-[350px]  whitespace-nowrap ">
-                      {FA.question}
-                    </td>
+                  <th className="font-medium text-center">Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                {FAQ.slice(minimum === 0 ? minimum : minimum - 1, maximum).map(
+                  (FA, index) => (
+                    <tr
+                      key={FA.faq_id}
+                      className={`  ${
+                        index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
+                      } border-b`}
+                    >
+                      <td className="py-3 text-start  pl-5 ">{FA.faq_id}</td>
+                      <td className=" text-start truncate max-w-[350px]  whitespace-nowrap ">
+                        {FA.question}
+                      </td>
 
-                    <td className="">{FA.audience}</td>
+                      <td className="">{FA.audience}</td>
 
-                    <td className="">
-                      <div className="flex items-center gap-3 justify-center">
-                        <div
-                          className={`rounded-[3px] border-2   p-[1px] w-[26px] h-fit flex  ${
-                            FA.status === "active"
-                              ? "border-green-500 justify-end"
-                              : FA.status === "inactive" &&
-                                "border-red-700 justify-start"
-                          }`}
-                          onClick={(e) => changestatus(FA.faq_id)}
-                        >
+                      <td className="">
+                        <div className="flex items-center gap-3 justify-center">
                           <div
-                            className={`min-w-[6px] w-[6px] min-h-[6px] h-[6px]  ${
+                            className={`rounded-[3px] border-2   p-[1px] w-[26px] h-fit flex  ${
                               FA.status === "active"
-                                ? "bg-green-500"
-                                : FA.status === "inactive" && "bg-red-700"
+                                ? "border-green-500 justify-end"
+                                : FA.status === "inactive" &&
+                                  "border-red-700 justify-start"
                             }`}
-                          ></div>
+                            onClick={(e) => changestatus(FA.faq_id)}
+                          >
+                            <div
+                              className={`min-w-[6px] w-[6px] min-h-[6px] h-[6px]  ${
+                                FA.status === "active"
+                                  ? "bg-green-500"
+                                  : FA.status === "inactive" && "bg-red-700"
+                              }`}
+                            ></div>
+                          </div>
+
+                          <button>
+                            <Link to={`/FAQ/${FA.faq_id}`}>
+                              <img
+                                src={eye1svg}
+                                alt="view"
+                                className="w-4 h-4"
+                              />
+                            </Link>
+                          </button>
+
+                          <button>
+                            <img
+                              src={deletesvg}
+                              alt="delete"
+                              className="w-4 h-4"
+                            />
+                          </button>
                         </div>
-
-                        <button>
-                          <Link to={`/FAQ/${FA.faq_id}`}>
-                            <img src={eye1svg} alt="view" className="w-4 h-4" />
-                          </Link>
-                        </button>
-
-                        <button>
-                          <img
-                            src={deletesvg}
-                            alt="delete"
-                            className="w-4 h-4"
-                          />
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                )
-              )}
-            </tbody>
-          </table>
+                      </td>
+                    </tr>
+                  )
+                )}
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
-      <div className="">
+      <div className=" bg-custom-tag translate-x-4">
         <Pagination
           total_jobs={FAQ.length}
           pagelimit={pagelimit}

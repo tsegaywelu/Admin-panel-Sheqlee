@@ -15,6 +15,12 @@ import Subscribers from "../pages/Subscribers";
 import Systemconfig from "../pages/Systemconfig";
 import AddFAQ from "../componnets/basecomponents/AddFAQ";
 import Updatefaq from "../pages/Updatefaq";
+import Pagereader from "../componnets/onetimecomponents/Pagereader";
+import Pageupdater from "../componnets/onetimecomponents/Pageupdater";
+import Testimaonyupdate from "../componnets/onetimecomponents/Testimaonyupdate";
+import Updatehero from "../componnets/onetimecomponents/Updatehero";
+import Feedback from "../pages/Feedback";
+import Editprofile from "../pages/Editprofile";
 const dashboardRoutes = [
   { path: "/", element: <Home /> },
   { path: "/jobposts", element: <Jopposts /> },
@@ -33,6 +39,12 @@ const dashboardRoutes = [
   { path: "/systemconfig", element: <Systemconfig /> },
   { path: "/FAQ/addfaq", element: <AddFAQ /> },
   { path: "/FAQ/:faqId", element: <Updatefaq /> },
+  { path: "/apgspptscp/:page_id", element: <Pagereader /> },
+  { path: "/apgspptscp/pageupdate/:page_id", element: <Pageupdater /> },
+  { path: "/edittestimony", element: <Testimaonyupdate /> },
+  { path: "/edithero", element: <Updatehero /> },
+  { path: "/feedbacks", element: <Feedback /> },
+  { path: "/editprofile", element: <Editprofile /> },
 
   // i wil add here all other routes
 ];

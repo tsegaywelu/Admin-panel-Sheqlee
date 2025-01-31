@@ -24,6 +24,8 @@ const Addandupdateuser = ({
   underlinewidth,
   emailplaceholder,
   phoneplaceholder,
+  addpasswordinput,
+  adddropdown,
 }) => {
   const [profilePic, setProfilePic] = useState(formData.icon);
   const [buttonbackground, setButtonbackground] = useState("bg-black");
@@ -45,9 +47,12 @@ const Addandupdateuser = ({
       // Compare current formData with previous values for "Update"
       const hasChanges =
         formData.icon !== prevFormData.icon ||
-        formData.title !== prevFormData.title ||
+        formData.full_name !== prevFormData.full_name ||
         formData.id !== prevFormData.id ||
-        formData.yourTags.join(",") !== prevFormData.yourTags.join(",");
+        formData.email !== prevFormData.email ||
+        formData.phone_number !== prevFormData.phone_number ||
+        formData.password !== prevFormData.password ||
+        formData.confirm_password !== prevFormData.confirm_password;
 
       setButtonbackground(hasChanges ? "bg-custom-purple" : "bg-black");
     }
@@ -99,7 +104,7 @@ const Addandupdateuser = ({
       </div>
 
       <div className="pl-6 ">
-        <div className="flex flex-col mt-16 gap-y-8 ">
+        <div className="flex flex-col mt-16 gap-y-8  ">
           <div className="relative w-[31%] ">
             <input
               // placeholder={textid}
@@ -112,7 +117,11 @@ const Addandupdateuser = ({
               {descriptiontoid}
             </small>
           </div>
-          <div className="flex gap-x-8 items-start w-full">
+          <div
+            className={`flex gap-x-8  ${
+              addpasswordinput ? "items-end" : "items-start"
+            } w-full`}
+          >
             <div className="flex flex-col gap-y-2.5 w-[46%]  relative ">
               <input
                 type="text"
@@ -138,13 +147,37 @@ const Addandupdateuser = ({
                 }
               />
 
-              <Dropdown
-                defaultText={defaulttext}
-                options={["Super admin", "Admin", "	Sales"]}
-                formData={formData}
-                updateFormData={handleInputChange}
-                correctvalue2={"user_role"}
-              />
+              {adddropdown && (
+                <Dropdown
+                  defaultText={defaulttext}
+                  options={["Super admin", "Admin", "	Sales"]}
+                  formData={formData}
+                  updateFormData={handleInputChange}
+                  correctvalue2={"user_role"}
+                />
+              )}
+              {addpasswordinput && (
+                <div className="w-full flex flex-col gap-y-2.5">
+                  <input
+                    type="password"
+                    placeholder={"New password"}
+                    className="bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text w-full"
+                    value={formData.password}
+                    onChange={(e) =>
+                      handleInputChange("password", e.target.value)
+                    }
+                  />
+                  <input
+                    type="password"
+                    placeholder={"Confirm password"}
+                    className="bg-custom-tag px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text w-full"
+                    value={formData.confirm_password}
+                    onChange={(e) =>
+                      handleInputChange("confirm_password", e.target.value)
+                    }
+                  />
+                </div>
+              )}
             </div>
 
             {/* //upload side  */}
@@ -170,10 +203,17 @@ const Addandupdateuser = ({
               </div>
             </div>
           </div>
+          {addpasswordinput && (
+            <p className="text-[9px] -translate-y-6">
+              Leave this empty if you don't want to change your password.
+            </p>
+          )}
         </div>
 
         <button
-          className={` ${buttonbackground} text-white font-medium px-5 py-2 mt-24 text-lg rounded-[7px]`}
+          className={` ${buttonbackground} text-white font-medium px-5 py-2 ${
+            addpasswordinput ? "mt-3" : "mt-24"
+          } text-lg rounded-[7px]`}
         >
           {buttontext}
         </button>
