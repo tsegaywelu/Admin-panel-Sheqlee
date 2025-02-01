@@ -7,6 +7,7 @@ const Intercode = () => {
     password: "",
     confirm_password: "",
   });
+  console.table(formData);
   const updateFormData = (field, value) => {
     setFormdata((prevdata) => ({
       ...prevdata,
@@ -33,7 +34,7 @@ const Intercode = () => {
               formData={formData}
               updateFormData={updateFormData}
               width={"w-full"}
-              correctvalue={"email"}
+              correctvalue={"code"}
             />
           </div>
           <div className="flex flex-col w-full gap-3">
@@ -66,7 +67,7 @@ const Intercode = () => {
               formData.password && formData.confirm_password && formData.code
                 ? "bg-custom-purple"
                 : "bg-black"
-            } px-8 py-[10px] text-white font-bold  text-[23px] rounded-[10px]`}
+            } px-7 py-[8px] text-white font-bold  text-[23px] rounded-[10px]`}
           >
             Save
           </button>

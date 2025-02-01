@@ -140,7 +140,11 @@ const Home = () => {
           >
             <Textcard
               text={"Job Posts"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Companies"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
 
@@ -152,7 +156,11 @@ const Home = () => {
           >
             <Textcard
               text={"Companies"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Freelancers"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -163,7 +171,11 @@ const Home = () => {
           >
             <Textcard
               text={"Freelancers"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Email Alerts"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button

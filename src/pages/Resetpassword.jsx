@@ -6,6 +6,7 @@ const Resetpassword = () => {
   const [formData, setFormdata] = useState({
     email: "",
   });
+
   const updateFormData = (field, value) => {
     setFormdata((prevdata) => ({
       ...prevdata,
@@ -22,7 +23,7 @@ const Resetpassword = () => {
         <p className=" leading-5">
           Please enter your email to get a password reset code.
         </p>
-        <div className="w-full my-4 space-y-10">
+        <div className="w-full my-4 space-y-9">
           <Oneinput
             correctvalue={"email"}
             placeHolder={"Your email... "}
@@ -34,7 +35,7 @@ const Resetpassword = () => {
           <button
             className={`${
               formData.email ? "bg-custom-purple" : "bg-black"
-            } px-8 py-[10px] text-white font-bold  text-[23px] rounded-[10px]`}
+            } px-7 py-[8px] text-white font-bold  text-[23px] rounded-[10px]`}
           >
             <Link to={"/reset password/intercode"}>Reset</Link>
           </button>

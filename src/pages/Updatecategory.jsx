@@ -46,14 +46,7 @@ const Updatecategory = () => {
     title: "Cross-Platform Development",
     description:
       "The creation of software apps that are compatible with multiple mobile operating systems.",
-    yourTags: [
-      "React Native",
-      "Flutter",
-      "Ionic",
-      "Xamarin",
-      "Laravel",
-      "Django",
-    ],
+    yourTags: ["React Native", "Flutter"],
     icon: profilesvg,
   });
   const handleInputChange = (field, value) => {

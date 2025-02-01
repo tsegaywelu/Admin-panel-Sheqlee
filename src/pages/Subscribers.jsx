@@ -112,7 +112,11 @@ const Subscribers = () => {
           >
             <Textcard
               text={"Companies"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Categories"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -123,7 +127,11 @@ const Subscribers = () => {
           >
             <Textcard
               text={"Categories"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Tags"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -150,7 +158,6 @@ const Subscribers = () => {
                 buttontext={item.buttontext}
                 Increase={item.Increase}
                 decrease={item.decrease}
-                resize={item.resize}
               />
             ))}
           </div>
