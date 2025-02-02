@@ -41,7 +41,7 @@ const Updatehero = () => {
         />
       </div>
 
-      <div className="flex flex-col gap-5  mt-20 pl-6 w-[30%]">
+      <div className="flex flex-col gap-5  mt-20 pl-6 w-[30%] relative">
         <input
           type="text"
           className="bg-black text-white px-4 py-2.5 rounded-[7px] outline-none placeholder:text-placehoder-text"
@@ -49,13 +49,18 @@ const Updatehero = () => {
           onChange={(e) => handlechange("Title", e.target.value)}
         />
         <textarea
-          rows={4}
+          rows={state.row}
           name="area"
           id="teaxt-area"
           className="bg-custom-tag pr-4 pl-2 py-3.5 rounded-[7px] outline-none placeholder:text-placehoder-text resize-none relative leading-5"
           value={formData.description}
           onChange={(e) => handlechange("description", e.target.value)}
         ></textarea>
+        <span className="absolute  text-xs right-3 bottom-2 font-kantumruy text-custom-placeholder">
+          {state.row === 3
+            ? `${formData.description.length}/64`
+            : state.row === 5 && ` ${formData.description.length}/128`}
+        </span>
       </div>
       <div className="pt-10 pl-6">
         <button

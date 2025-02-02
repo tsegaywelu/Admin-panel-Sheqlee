@@ -13,10 +13,17 @@ const Login = () => {
       [field]: value,
     }));
   };
+
+  const handlesubmit = (email, password) => {
+    //  i am not kding gpt please tell me what can i do here
+  };
   return (
     <div className=" bg-custom-slate  font-kantumruy">
       <Logotitle margintop={"pt-24"} />
-      <div className="flex flex-col items-center justify-center  gap-3  max-w-[325px]  mx-auto my-9">
+      <form
+        className="flex flex-col items-center justify-center  gap-3  max-w-[325px]  mx-auto my-9 "
+        onSubmit={handlesubmit}
+      >
         <h2 className="font-kantumruy font-bold text-[23px]   w-full">
           Log in
         </h2>
@@ -67,7 +74,7 @@ const Login = () => {
             activate your account.
           </div>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

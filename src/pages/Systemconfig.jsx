@@ -29,7 +29,11 @@ const Systemconfig = () => {
           >
             <Textcard
               text={"FAQ"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "APGSPPTSCP"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -40,7 +44,11 @@ const Systemconfig = () => {
           >
             <Textcard
               text={"APGSPPTSCP"}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Testimonials"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -53,7 +61,11 @@ const Systemconfig = () => {
               text={"Testimonials"}
               activeTitle={activeTitle.Title}
               UpdateActivetitle={UpdateActivetitle}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Hero"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button
@@ -66,7 +78,11 @@ const Systemconfig = () => {
               text={"Hero"}
               activeTitle={activeTitle.Title}
               UpdateActivetitle={UpdateActivetitle}
-              showborderleft={"border-r-[1.5px] border-custom-placeholder"}
+              showborderleft={`${
+                activeTitle.Title === "Footer"
+                  ? ""
+                  : "border-r-[1.5px] border-custom-placeholder"
+              }`}
             />
           </button>
           <button

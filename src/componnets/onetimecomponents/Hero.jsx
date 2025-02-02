@@ -8,15 +8,19 @@ const Hero = () => {
   const navigate = useNavigate();
   const data = [
     {
+      row: 3,
+
       title: "Title",
       description: "Recruit affordable & skilled Ethiopian professionals",
     },
     {
+      row: 5,
       title: "description",
       description:
         "Web frontend, mobile app, backend, database, full-stack, data science, UI/UX & product design, project management, scrum master, etc.",
     },
     {
+      row: 1,
       title: "animation",
       description: "JSON file URL",
     },
@@ -49,14 +53,16 @@ const Hero = () => {
                   index % 2 === 0 ? "bg-custom-white" : "bg-custom-tag"
                 } border-b `}
               >
-                <td className="pl-5 w-1/4">{item.title}</td>
+                <td className="pl-5 py-10 w-1/4">{item.title}</td>
                 <td className="py-5 w-[50%] text-start min-h-[250px]">
                   {item.description}
                 </td>
                 <td className="w-1/6  ">
                   <div className="flex items-center justify-center gap-5 ">
                     <button
-                      onClick={() => navigate(`/edithero`, { state: item })}
+                      onClick={() =>
+                        navigate(`/edithero`, { state: item, id: index })
+                      }
                     >
                       <img src={editsvg} alt="edit icon" className="w-3 h-3" />
                     </button>
